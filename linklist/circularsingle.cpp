@@ -1,4 +1,5 @@
 #include<iostream>
+#include<map>
 using namespace std;
 class node{
     public:
@@ -38,6 +39,22 @@ void insertatposition(node*&tail,int element,int data)
       current->next=temp;
 
     }
+
+}
+bool detectedcycle(node*&head)
+{
+   node*temp=head;
+   map<node*,bool> visited;
+   while(temp!=NULL)
+   {
+     if(visited[temp]){
+         return true;
+     }
+
+     visited[temp]=true;
+     temp=temp->next;
+   }
+   return false;
 
 }
 bool iscircular(node*&head)
@@ -100,13 +117,14 @@ int main()
     insertatposition(tail,3,22);
      insertatposition(tail,22,26);
      insertatposition(tail,22,2);
-     if(iscircular(tail))
+     if(detectedcycle(tail))
      {
-        cout<<"ll is circular";
+        cout<<"cycle is there";
      }
      else{
         cout<<"ll is not circular";
      }
+
    
     
     // cout<<"tail "<<tail->data;

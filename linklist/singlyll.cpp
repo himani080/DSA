@@ -110,6 +110,29 @@ node* kreverse(node*&head,int k)
 
 
 }
+bool floyddetect(node*&head)
+{
+    node*slow=head;
+    node*fast=head;
+    while(slow!=NULL&&fast!=NULL)
+    {
+        fast=fast->next;
+        if(fast->next!=NULL)
+        {
+            fast=fast->next;
+        }
+        slow=slow->next;
+        if(slow==fast)
+        {
+            return true;
+        }
+
+    }
+    return false;
+
+
+
+}
 bool iscircular(node*&head)
 {
     node*temp=head->next;
@@ -144,12 +167,12 @@ node* reverse(node*&head)
     }
     return prev;
 }
-node*middlenew(node*&head)
-{
-    if(head==NULL){
+// node*middlenew(node*&head)
+// {
+//     if(head==NULL){
         
-    }
-}
+//     }
+// }
 void deletenode(int position,node*&head){
     node*prev=NULL;
     node*current=head;
@@ -188,8 +211,8 @@ int main()
     node*temp=NULL;
     insertattail(tail,12);
     insertatposition(head,tail,3,234);
-      insertatposition(head,tail,3,24);
-       insertatposition(head,tail,4,45);
+    insertatposition(head,tail,3,24);
+    insertatposition(head,tail,4,45);
     print(head);
     cout<<"head "<<head->data;
     cout<<"tail "<<tail->data;

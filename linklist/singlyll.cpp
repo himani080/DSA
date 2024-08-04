@@ -32,6 +32,7 @@ void insertattail(node*&tail,int data)
     tail=temp;
 
 }
+
 void insertatposition(node*&head,node*&tail,int position,int data)
 {
     int cnt=1;

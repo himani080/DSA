@@ -8,6 +8,7 @@ class node{
         this->data=data;
         this->next=NULL;
     }
+    
     ~node(){
         int value=this->data;
         if(this->next!=NULL){
@@ -93,7 +94,6 @@ node* kreverse(node*&head,int k)
     {
         return NULL;
     }
-
    while(current!=NULL && count<k){
     forward=current->next;
     current->next=prev;
@@ -130,9 +130,54 @@ bool floyddetect(node*&head)
     }
     return false;
 
-
-
 }
+node* sort012(node*&head)
+{
+   node*temp=head;
+   int count0=0;
+   int count1=0;
+   int count2=0;
+
+    while(temp!=NULL)
+    {
+          if(temp->data==0)
+          {
+            count0++;
+          }
+          else if(temp->data==1)
+          {
+            count1++;
+          }
+          else{
+            count2++;
+          }
+          temp=temp->next;
+    }
+    temp=head;
+    while(temp!=NULL)
+    {
+        if(count0!=0)
+        {
+               temp->data=0;
+               count0--;
+        }
+        else if(count1!=1)
+        {
+             temp->data=1;
+             count1--;
+        }
+        else{
+            temp->data=2;
+            count2--;
+        }
+        temp=temp->next;
+
+    }
+    return head;
+
+    
+}
+
 bool iscircular(node*&head)
 {
     node*temp=head->next;
@@ -149,6 +194,7 @@ bool iscircular(node*&head)
         return true;
     }
     return false;
+
 }
 node* reverse(node*&head)
 {
@@ -203,30 +249,40 @@ void print(node*&head){
 }
 int main()
 {
-    node* node1=new node(10);
+    node* node1=new node(1);
     // cout<<node1->data<<endl;
     // cout<<node1->next;
     node*head=node1;
     node*tail=node1;
-    node*temp=NULL;
-    insertattail(tail,12);
-    insertatposition(head,tail,3,234);
-    insertatposition(head,tail,3,24);
-    insertatposition(head,tail,4,45);
+    // node*temp=NULL;
+    // insertattail(tail,1);
+    insertatposition(head,tail,2,2);
+    insertatposition(head,tail,3,2);
+    insertatposition(head,tail,4,1);
+    // insertatposition(head,tail,4,1);
     print(head);
-    cout<<"head "<<head->data;
-    cout<<"tail "<<tail->data;
-    cout<<"after reversing"<<endl;
-    // deletenode(3,head);
-//   temp=middle(head);
- head=kreverse(head,2);
-    print(head);
-    if(iscircular(head)==true)
-     {
-        cout<<"ll is circular";
-     }
-     else{
-        cout<<"ll is not circular";
-     }
+    // cout<<"head "<<head->data;
+    // cout<<"tail "<<tail->data;
+    // cout<<"after sorting"<<endl;
+    // sort012(head);
+    // print(head);
+    if(reverse(head)==head)
+        {
+            cout<<"true";
+        }
+        else{
+            cout<<"false";
+        }
+// deletenode(3,head);
+// temp=middle(head);
+// head=kreverse(head,2);
+    // print(head);
+    // if(iscircular(head)==true)
+    //  {
+    //     cout<<"ll is circular";
+    //  }
+    //  else{
+    //     cout<<"ll is not circular";
+    //  }
 //   cout<<temp->data<<endl;
 }

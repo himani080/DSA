@@ -57,6 +57,29 @@ bool detectedcycle(node*&head)
    return false;
 
 }
+bool floyddetect(node*&head)
+{
+    node*slow=head;
+    node*fast=head;
+    while(slow!=NULL&&fast!=NULL)
+    {
+        fast=fast->next;
+        if(fast->next!=NULL)
+        {
+            fast=fast->next;
+        }
+        slow=slow->next;
+        if(slow==fast)
+        {
+            return true;
+        }
+
+    }
+    return false;
+
+
+
+}
 bool iscircular(node*&head)
 {
     node*temp=head->next;
@@ -117,7 +140,7 @@ int main()
     insertatposition(tail,3,22);
      insertatposition(tail,22,26);
      insertatposition(tail,22,2);
-     if(detectedcycle(tail))
+     if(floyddetect(tail))
      {
         cout<<"cycle is there";
      }

@@ -17,7 +17,7 @@ void insertionsort(int arr[],int n)
             break;
         }
     }
-    arr[j+1]=temp;///j hamesha ek piche rahega ek value insert krne ke liye check krna padega
+    arr[j+1]=temp;
 
    }
 }

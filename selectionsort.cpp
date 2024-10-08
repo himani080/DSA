@@ -17,9 +17,10 @@ void selectionsort(int arr[],int n)
             {
                 minIndex=j;
             }
-            swap(arr[minIndex],arr[i]);
+            
             
         }
+        swap(arr[minIndex],arr[i]);
     }
 }
 int main()

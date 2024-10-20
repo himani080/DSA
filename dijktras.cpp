@@ -34,7 +34,7 @@ void dijktras(const vector<vector<int> > &graph,int src){
 			cout<<i;
 		}
 		else{
-			cout<<"distance from"<<i<<"is "<<dist[i];
+			cout<<"distance from"<<i<<"is "<<dist[i]<<endl;
 		}
 	}
 }

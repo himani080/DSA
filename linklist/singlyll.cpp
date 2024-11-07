@@ -26,9 +26,14 @@ void insertathead(node*&head,int data)
    head=temp;
 
 }
-void insertattail(node*&tail,int data)
+void insertattail(node*&head,node*&tail,int data)
 {
     node*temp=new node(data);
+    if(head==NULL)
+    {
+        head=temp;
+        tail=temp;
+    }
     tail->next=temp;
     tail=temp;
 
@@ -52,7 +57,7 @@ void insertatposition(node*&head,node*&tail,int position,int data)
     }
     if(temp->next==NULL)
     {
-        insertattail(tail,data);
+        // insertattail(head,tail,data);
         return;
     }
     node*nodetoinsert=new node(data);
@@ -94,6 +99,11 @@ node* kreverse(node*&head,int k)
     {
         return NULL;
     }
+    current = head;
+        for (int i = 0; i < k; ++i) {
+            if (current == NULL) return head; // If less than k nodes, return head
+            current = current->next;
+        }
    while(current!=NULL && count<k){
     forward=current->next;
     current->next=prev;
@@ -126,10 +136,8 @@ bool floyddetect(node*&head)
         {
             return true;
         }
-
     }
     return false;
-
 }
 node* sort012(node*&head)
 {
@@ -171,11 +179,8 @@ node* sort012(node*&head)
             count2--;
         }
         temp=temp->next;
-
     }
-    return head;
-
-    
+    return head; 
 }
 
 bool iscircular(node*&head)
@@ -194,7 +199,6 @@ bool iscircular(node*&head)
         return true;
     }
     return false;
-
 }
 node* reverse(node*&head)
 {
@@ -239,6 +243,57 @@ void deletenode(int position,node*&head){
         delete current;
     }
 }
+node*add(node*&first,node*&second){
+    int digit=0;
+    int sum=0;
+    int carry=0;
+    node*addtail=NULL;
+    node*addhead=NULL;
+    while(first!=NULL&&second!=NULL)
+    {
+    sum=carry+first->data+second->data;
+    digit=sum%10;
+    insertattail(addhead,addtail,digit);
+    carry=sum/10;
+    first=first->next;
+    second=second->next;
+    }
+    while(first!=NULL){
+        sum=carry+first->data;
+        digit=sum%10;
+        insertattail(addhead,addtail,digit);
+        carry=sum/10;
+        first=first->next;
+
+    }
+     while(second!=NULL){
+        sum=carry+second->data;
+        digit=sum%10;
+        insertattail(addhead,addtail,digit);
+        carry=sum/10;
+        second=second->next;
+
+    }
+    while(carry!=0){
+        sum=carry;
+        digit=sum%10;
+       insertattail(addhead,addtail,digit);
+        carry=sum/10;
+
+    }
+    return addtail;
+
+    
+}
+node* addtwoll(node*&first,node*&second){
+    first=  reverse(first);
+    second=  reverse(second);
+      node*ans=add(first,second);
+     ans= reverse(ans);
+      return ans;
+     
+}
+
 void print(node*&head){
     node*temp=head;
     while(temp!=NULL)
@@ -249,7 +304,8 @@ void print(node*&head){
 }
 int main()
 {
-    node* node1=new node(1);
+    node* node1=new node(4);
+    node* node2=new node(4);
     // cout<<node1->data<<endl;
     // cout<<node1->next;
     node*head=node1;
@@ -257,22 +313,32 @@ int main()
     // node*temp=NULL;
     // insertattail(tail,1);
     insertatposition(head,tail,2,2);
-    insertatposition(head,tail,3,2);
-    insertatposition(head,tail,4,1);
+    insertatposition(head,tail,3,3);
+    insertatposition(head,tail,4,5);
     // insertatposition(head,tail,4,1);
     print(head);
+    node*head1=node2;
+    node*tail1=node2;
+    insertatposition(head1,tail1,2,2);
+    insertatposition(head1,tail1,3,4);
+    print(head1);
+   node*temp= addtwoll(head,head1);
+   print(temp);
+
+
+  
     // cout<<"head "<<head->data;
     // cout<<"tail "<<tail->data;
     // cout<<"after sorting"<<endl;
     // sort012(head);
     // print(head);
-    if(reverse(head)==head)
-        {
-            cout<<"true";
-        }
-        else{
-            cout<<"false";
-        }
+    // if(reverse(head)==head)
+    //     {
+    //         cout<<"true";
+    //     }
+    //     else{
+    //         cout<<"false";
+    //     }
 // deletenode(3,head);
 // temp=middle(head);
 // head=kreverse(head,2);

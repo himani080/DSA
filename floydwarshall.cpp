@@ -30,9 +30,7 @@ void floydwarshall(vector<vector<int>>& graph, vector<string>& locations, int V)
             if (dist[i][j] == INT_MAX) {
                 cout << setw(12) << "INF";
             } else {
-                int minutes = dist[i][j] / 60;
-                int seconds = dist[i][j] % 60;
-                cout << setw(5) << minutes << "min " << setw(2) << seconds << "sec";
+               cout<<dist[i][j];
             }
         }
         cout << endl;

@@ -6,7 +6,6 @@ void merge(int *arr,int s,int e){
     int len2=e-mid;
     int *arr1=new int[len1];
     int *arr2=new int[len2];
-    
     int mainarrindex=s;
     for(int i=0;i<len1;i++)
     {
@@ -35,8 +34,8 @@ void merge(int *arr,int s,int e){
     while(j<len2){
         arr[mainarrindex++]=arr2[j++];
     }
-   delete[]arr1;
-   delete[]arr2;
+//    delete[]arr1;
+//    delete[]arr2;
 }
 void mergesort(int *arr,int s,int e)
 {

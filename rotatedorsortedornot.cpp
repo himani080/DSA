@@ -27,6 +27,7 @@ int n;
     for(int i=0;i<n;i++)
     {
         cin>>arr[i];
+        
     }
    int flag= checkRotatedSorted(arr,n);
    if(flag==1)
